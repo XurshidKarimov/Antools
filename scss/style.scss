@@ -1,1 +1,160 @@
 @import "nullstyle.scss";
+@import "fonts.scss";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1E252B;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.main-content {
+    padding-top: 100px;
+    display: flex;
+    column-gap: 20px;
+}
+
+details {
+    padding-left: 100px;
+
+    & summary::marker {
+        content: ('');
+    }
+
+    summary {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        cursor: pointer;
+
+        & svg {
+            & path {
+                stroke: #9A9DA0;
+            }
+        }
+    }
+
+}
+
+
+
+.card {
+    @include flex($fDirection: column, $rGap: 30);
+    position: relative;
+    padding: 33px;
+    max-width: 395px;
+    min-height: 295px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: linear .3s;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+
+    &-top {
+        @include flex(center, $cGap: 30);
+
+        &__textblock {
+            @include flex($fDirection: column, $rGap: 5);
+
+            & .brandname {
+                @include font(24, 500, 36, none, #FFFFFF);
+                opacity: .7;
+                transition: linear .3s;
+            }
+
+            & .state {
+                @include font(18, 400, 27, none, #FFA537);
+                opacity: .5;
+                transition: linear .3s;
+            }
+        }
+    }
+
+    &-text {
+        @include font(16, 400, 30, none, #FFFFFF);
+        transition: linear .3s;
+        opacity: .5;
+    }
+
+    &-bot {
+        @include flex(center, space-between);
+
+        & .action {
+            @include flex(center, $cGap: 20);
+
+            & svg.love {
+                & path {
+                    fill: #73787C;
+                    
+                    &.redlove {
+                        fill: #FD3B41;
+                    }
+                }
+
+                & svg.folder {
+                    & path {
+                        stroke: #73787C;
+                    }
+                    
+                }
+            }
+
+            &__love,
+            &__folder {
+                padding: 7px;
+                border-radius: 8px;
+                transition: linear .2s;
+
+                &:hover {
+                    background-color: #283036;
+                }
+            }
+        }
+
+        & .card-btn {
+            padding: 10px 35px;
+            background-color: transparent;
+            border-radius: 8px;
+            transition: linear .3s;
+            @include font(16, 600, 24, none, #FFFFFF);
+            opacity: .5;
+
+            &:hover {
+                background-color: #FF6E30;
+                opacity: 1;
+            }
+        }
+    }
+
+}
+
+.card:hover {
+    border-color: #2E343A;
+    background-color: #242C32;
+    transform: translateY(-5px);
+
+    & svg.sketch {
+        transform: rotateY(180deg);
+        transition: linear .4s;
+    }
+
+    & span:where(.brandname, .state),
+    & p:where(.card-text) {
+        opacity: 1;
+    }
+}
+
+.card span.shadow {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    display: none;
+    transition: linear .2s;
+    box-shadow: 0 0 65px 45px #ff6e30;
+    opacity: .3;
+}
