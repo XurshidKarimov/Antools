@@ -1,6 +1,10 @@
 @import "nullstyle.scss";
 @import "fonts.scss";
 
+
+// ************COLORS***************
+
+// -----FONT-COLORS---------
 $logo-name__color: #E8E9EA;
 $header-link__color: #9A9DA0;
 $sign-block__color: #9A9DA0;
@@ -34,8 +38,7 @@ $footer-address__color: #9A9DA0;
 $footer-section__list-title-color: $all-titles-color;
 $footer-section__list-link-color: $all-subtitles-color;
 
-
-
+//-----ELEMENT-COLORS---------
 $btn__bg-color: #FF6E30;
 $form-bg__color: #283036;
 $social-icon-fill__color: #CDCFD0;
@@ -51,6 +54,9 @@ $slider-info__bg-color: #242C32;
 $slider-state__color: #283036;
 $slider-state-active__color: #FF6E30;
 
+// -----------------COLORS END----------------
+
+// ------COMPONENTS-------
 .card--shadow {
     position: absolute;
     right: 45px;
@@ -60,50 +66,26 @@ $slider-state-active__color: #FF6E30;
     opacity: .4;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #1E252B;
+.btn {
+    @include font(16, 600, inherit, capitalize, $btn__color);
+    background-color: $btn__bg-color;
+    border-radius: 8px;
+    transition: linear .3s;
 }
 
-.container {
-    max-width: 1265px;
-    padding: 0 15px;
+.titleblock {
     margin: 0 auto;
-    padding-top: 100px;
+    @include flex($fDirection: column, $rGap: 25);
+    text-align: center;
 }
 
-details {
-    position: relative;
-    padding-left: 100px;
-
-    & summary::marker {
-        content: ('');
-    }
-
-    & summary {
-        display: flex;
-        align-items: center;
-        gap: 0 10px;
-        cursor: pointer;
-
-        & svg {
-            & path {
-                stroke: #9A9DA0;
-            }
-        }
-    }
-
-    & ul {
-        @include flex($fDirection: column, $rGap: 8);
-    }
-
-    &[open] summary+ul {
-        position: absolute;
-        top: 20px;
-    }
+.section-title {
+    @include font(48, 500, inherit, capitalize, $all-titles-color);
 }
 
-
+.section-subtitle {
+    @include font(18, 500, inherit, none, $all-subtitles-color);
+}
 
 .card {
     @include flex($fDirection: column, $rGap: 30);
@@ -228,11 +210,313 @@ details {
     }
 }
 
-.popular {
-    &-content {
-        &__cardblock {
-            @include flex($cGap: 25, $rGap: 100);
-            flex-wrap: wrap;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1E252B;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1265px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    background-color: #1E252B;
+
+    & .header-content {
+        padding: 30px 0;
+        @include flex(center, space-between);
+
+        &__logo-block {
+            @include flex(center, $cGap: 12);
+
+            & .logo-name {
+                @include font(22, 600, inherit, none, $logo-name__color);
+            }
+        }
+
+        &__navbar {
+            &__link-list {
+                @include flex(center, $cGap: 40);
+
+                &__item {
+
+                    &__link {
+                        @include font(16, 500, inherit, capitalize, $header-link__color);
+                    }
+
+                    &__dropdown {
+                        position: relative;
+
+                        & summary {
+                            display: flex;
+                            align-items: center;
+                            gap: 0 10px;
+                            cursor: pointer;
+
+                            &::marker {
+                                content: '';
+                            }
+
+                            & span {
+                                @include font(16, 500, inherit, capitalize, $header-link__color);
+                            }
+
+                            & svg {
+                                & path {
+                                    stroke: #9A9DA0;
+                                }
+                            }
+
+                            & .dropdown-list {
+                                @include flex($fDirection: column, $rGap: 8);
+                            }
+
+                        }
+
+                        &[open] summary+ul {
+                            position: absolute;
+                            top: 25px;
+                            background-color: #1E252B;
+                            z-index: 2;
+
+                            & li {
+                                & a {
+                                    @include font(16, 500, inherit, capitalize, $header-link__color);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__signblock {
+            @include flex(center, $cGap: 40);
+
+            &__login {
+                @include font(16, 600, inherit, none, $sign-block__color);
+            }
+
+            &__signup {
+                padding: 12px 28px;
+            }
         }
     }
+
+}
+
+main {
+    .prime {
+        overflow: hidden;
+
+        &-content {
+            padding-top: 180px;
+            display: flex;
+
+            &__left-block {
+                &__textblock {
+                    margin-bottom: 60px;
+
+                    &__title {
+                        @include font(50, 500, 70, none, $all-titles-color);
+                        color: $main-page__title-color;
+                        margin-bottom: 30px;
+                        max-width: 600px;
+                    }
+
+                    &__subtitle {
+                        @include font(18, 400, inherit, none, $all-subtitles-color);
+                        color: $main-page__subtitle-color;
+                        max-width: 485px;
+                    }
+                }
+
+                & form {
+                    @include flex(center);
+                    width: fit-content;
+                    padding: 8px 11px 8px 18px;
+                    border-radius: 15px;
+                    border: 1.5px solid #343A40;
+                    background-color: $form-bg__color;
+                    margin-bottom: 110px;
+
+                    & label {
+                        @include flex(center, $cGap: 13);
+
+                        & input {
+                            background-color: transparent;
+                            padding-right: 5px;
+
+                            &::placeholder {
+                                @include font(14, 400, inherit, none, $input-placeholder__color);
+                            }
+                        }
+                    }
+
+                    & button {
+                        padding: 12px 36px;
+                    }
+                }
+            }
+
+            &__social-list {
+                @include flex(center, $cGap: 45);
+            }
+
+            &__bg-block {
+                position: relative;
+                flex-grow: 1;
+
+                & img {
+                    position: absolute;
+                    top: -60px;
+                    left: 155px;
+                }
+            }
+        }
+    }
+
+    .popular {
+        margin: 200px 0;
+        background-color: #1E252B;
+
+        &-content {
+            &__titleblock {
+                @include flex(center, $fDirection: column);
+                margin-bottom: 90px;
+
+                &-title {
+                    color: $popular-page__title-color;
+                }
+
+                &-subtitle {
+                    color: $popular-page__subtitle-color;
+                    max-width: 425px;
+                }
+            }
+
+            &__cardblock {
+                @include flex($cGap: 25, $rGap: 100);
+                flex-wrap: wrap;
+                margin-bottom: 100px;
+            }
+
+            &__link {
+                padding: 17px 38px;
+                background-color: $popular__btn-bg-color;
+                border: 1.5px solid #283036;
+                border-radius: 8px;
+                @include font(20, 500, inherit, none, $popular__link-font-color);
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    .trusted {
+        margin-bottom: 200px;
+
+        &-content {
+            padding: 55px 82px;
+            background-color: $trusted__bg-color;
+            border: 1.5px solid #283036;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+
+            & .card--shadow {
+                display: block;
+                right: 98%;
+            }
+
+            &__title {
+                @include font(24, 500, inherit, none, $all-titles-color);
+                color: $trusted__title-color;
+                text-align: center;
+                margin-bottom: 55px;
+            }
+
+            &__brands {
+                @include flex(center, space-between);
+
+                & div {
+                    width: 195px;
+                    height: 45px;
+                    cursor: pointer;
+                    position: relative;
+                    transition: linear .3s;
+
+
+                    & img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+
+                        &:nth-child(2) {
+                            display: none;
+                        }
+                    }
+
+                    &:hover img:nth-child(1) {
+                        display: none;
+                    }
+
+                    &:hover img:nth-child(2) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .newcommer {
+        margin-bottom: 200px;
+
+        &-content {
+            display: flex;
+
+            &__left {
+                &__titleblock {
+                    margin: 0;
+                    margin-bottom: 60px;
+
+                    &__title,
+                    &__subtitle {
+                        text-align: start;
+                    }
+
+                    &__subtitle {
+                        width: 425px;
+                    }
+                }
+
+                &-link {
+                    padding: 12px 40px;
+                }
+            }
+
+            &__right {
+                flex-grow: 1;
+                @include flex($cGap: 20, $rGap: 20);
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            &__card {
+                max-width: 288px;
+                padding: 21px 28px;
+            }
+        }
+    }
+
+
 }
