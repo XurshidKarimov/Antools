@@ -518,5 +518,122 @@ main {
         }
     }
 
+    .slider {
+        margin-bottom: 250px;
 
+        &-content {
+            & .slide-block {
+                margin-bottom: 100px;
+                @include flex(center);
+
+                & .slide-to-left,
+                & .slide-to-right {
+                    font-size: 64px;
+                    color: #5D6266;
+                    transition: linear .3s;
+                    cursor: pointer;
+                }
+
+                & .slide-to-left:hover,
+                & .slide-to-right:hover {
+                    color: #FF6E30;
+                }
+            }
+
+            &__slide-item {
+                padding-left: 140px;
+                padding-right: 100px;
+                @include flex($cGap: 55px);
+
+                &__left {
+                    position: relative;
+
+                    &-imgbox {
+                        background: url(../assets/images/circle.png) no-repeat;
+                        background-position: center 85px;
+                        width: 400px;
+                        height: 495px;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    &__info {
+                        padding: 13px 22px;
+                        position: absolute;
+                        bottom: 30px;
+                        right: 0;
+                        border: 1px solid #283036;
+                        border-radius: 8px;
+                        backdrop-filter: blur(15px);
+                        overflow: hidden;
+
+                        & .card--shadow {
+                            display: block;
+                            position: relative;
+                            right: -240px;
+                            top: 110px;
+                            box-shadow: 0 0 65px 45px #1E3B50;
+                            opacity: 1;
+                        }
+
+                        &__name {
+                            @include font(26, 500, inherit, capitalize, $slider-info-name__font-color);
+                        }
+
+                        &__job {
+                            @include font(16, 400, inherit, capitalize, $slider-info-job__font-color);
+                        }
+                    }
+                }
+
+                &__blockquote {
+                    position: relative;
+                    padding-top: 130px;
+                    font-family: 'Roboto', sans-serif;
+                    @include font(14, 400, inherit, none, #ffffff);
+                    letter-spacing: 1.5px;
+
+                    &:after,
+                    &:before {
+                        content: '';
+                    }
+
+                    &::before {
+                        content: "“";
+                        position: absolute;
+                        top: -30px;
+                        left: -70px;
+                        font-weight: 500;
+                        font-size: 250px;
+                        font-family: "Lora", sans-serif;
+                        opacity: 0.2;
+                        transform: rotate(19deg);
+                    }
+                }
+            }
+
+            & .slide-state {
+                margin: 0 auto;
+                width: fit-content;
+                @include flex($cGap: 18);
+
+                &__item-1,
+                &__item-2,
+                &__item-3 {
+                    width: 55px;
+                    height: 10px;
+                    border-radius: 4px;
+                    background-color: $slider-state__color;
+                    transition: linear .3s;
+                }
+
+                &__item-1 {
+                    background-color: $slider-state-active__color;
+                }
+            }
+        }
+    }
 }
