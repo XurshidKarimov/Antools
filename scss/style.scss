@@ -7,11 +7,11 @@ $sign-block__color: #9A9DA0;
 $btn__color: #FDF5FF;
 $all-titles-color: #E8E9EA;
 $all-subtitles-color: #9A9DA0;
-$main-page__title-color: #E8E9EA;
-$main-page__subtitle-color: #9A9DA0;
+$main-page__title-color: $all-titles-color;
+$main-page__subtitle-color: $all-subtitles-color;
 $input-placeholder__color: #7A7F82;
-$popular-page__title-color: #E8E9EA;
-$popular-page__subtitle-color: #9A9DA0;
+$popular-page__title-color: $all-titles-color;
+$popular-page__subtitle-color: $all-subtitles-color;
 $card__brand-name__color: #CDCFD0;
 $card__brand-name__color-hover: #E9EAEA;
 $card__state__color: #9A6B32;
@@ -20,14 +20,45 @@ $card__text__color: #9A9DA0;
 $card__text__color-hover: #CFD1D2;
 $card__link-btn-color: #9A9DA0;
 $card__link-btn-color-hover: #FFFFFF;
+$popular__link-font-color: #FF6E30;
+$trusted__title-color: $all-titles-color;
+$newcomer__title-color: $all-titles-color;
+$newcomer__subtitle-color: $all-subtitles-color;
+$slider-info-name__font-color: #D2D0D0;
+$slider-info-job__font-color: #9DA0A3;
+$become-title__color: $all-titles-color;
+$become-subtitle__color: $all-subtitles-color;
+$footer-copy__color: #FFFFFFE5;
+$footer-info-text__color: #9A9DA0;
+$footer-address__color: #9A9DA0;
+$footer-section__list-title-color: $all-titles-color;
+$footer-section__list-link-color: $all-subtitles-color;
 
 
 
 $btn__bg-color: #FF6E30;
 $form-bg__color: #283036;
 $social-icon-fill__color: #CDCFD0;
+$card__bg-color: transparent;
+$card__bg-color-hover: #242C32;
 $card__link-bg-color: transparent;
 $card__link-bg-color-hover: #FF6E30;
+$popular__btn-border-color: #484F53;
+$popular__btn-bg-color: transparent;
+$trusted__bg-color: #242C32;
+$slider-section__bg-color: transparent;
+$slider-info__bg-color: #242C32;
+$slider-state__color: #283036;
+$slider-state-active__color: #FF6E30;
+
+.card--shadow {
+    position: absolute;
+    right: 45px;
+    top: 35px;
+    transition: linear .2s;
+    box-shadow: 0 0 65px 35px #ff6e30;
+    opacity: .4;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -88,13 +119,7 @@ details {
     cursor: pointer;
 
     &--shadow {
-        position: absolute;
-        right: 45px;
-        top: 35px;
         display: none;
-        transition: linear .2s;
-        box-shadow: 0 0 65px 35px #ff6e30;
-        opacity: .4;
     }
 
     &-top {
