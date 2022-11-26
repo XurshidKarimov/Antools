@@ -636,4 +636,105 @@ main {
             }
         }
     }
+
+    .become {
+        margin-bottom: 240px;
+
+        &-content {
+            &__titleblock {
+                margin-bottom: 100px;
+
+                &-subtitle {
+                    max-width: 427px;
+                    margin: 0 auto;
+                    color: $become-subtitle__color;
+                }
+            }
+
+            &__form {
+                padding: 8px 11px 8px 18px;
+                width: fit-content;
+                margin: 0 auto;
+                border-radius: 15px;
+                border: 1.5px solid #343A40;
+                background-color: $form-bg__color;
+
+                & input {
+                    background-color: transparent;
+
+                    &::placeholder {
+                        @include font(14, 400, inherit, none, $input-placeholder__color);
+                    }
+                }
+
+                & button {
+                    padding: 12px 35px;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    border-top: .5px solid #40464B;
+
+    & .footer-content {
+        @include flex($jContent: space-between);
+        padding-top: 70px;
+        padding-bottom: 100px;
+
+
+        &__site-info {
+            &__logo-link {
+                margin-bottom: 27px;
+                @include flex(center, $cGap: 12);
+
+                & .logo-name {
+                    @include font(22, 600, inherit, none, $logo-name__color);
+                }
+            }
+
+            &__copy {
+                @include font(16, 500, inherit, none, $footer-copy__color);
+                margin-bottom: 21px;
+            }
+
+            &__desc {
+                max-width: 260px;
+                @include font(14, 400, inherit, none, $footer-info-text__color);
+            }
+        }
+
+        &__list-block {
+            @include flex($cGap: 115);
+
+            &__list-section {
+                &__title {
+                    @include font(20, 500, inherit, capitalize, $all-titles-color);
+                    color: $footer-section__list-title-color;
+                    margin-bottom: 20px;
+                }
+
+                & address {
+                    & span {
+                        display: block;
+                        @include font(16, 500, inherit, none, $all-subtitles-color);
+                        color: $footer-address__color;
+                        font-style: normal;
+                    }
+                }
+
+                &__list {
+                    @include flex($fDirection: column, $rGap: 10);
+
+                    &-item {
+                        &__link {
+                            @include font(16, 500, inherit, capitalize, $all-subtitles-color);
+                            color: $footer-section__list-link-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
